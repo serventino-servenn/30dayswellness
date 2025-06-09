@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">30 Days Wellness</string>
+    <string name="exercise_count">%$d Exercises</string>
+    <string name="exercise_duration">%$d min</string>
+    <string name="day_label">Day %d</string>
+    <string name="exercise1">Yoga</string>
+    <string name="exercise2">Running</string>
+    <string name="exercise3">Weight</string>
+    <string name="exercise4">Music</string>
+    <string name="exercise5">Stretching</string>
+    <string name="exercise6">Full Body</string>
+    <string name="exercise7">Full Body</string>
+    <string name="exercise8">Full Body</string>
+    <string name="top_bar">30 Days Wellness</string>
+</resources>
