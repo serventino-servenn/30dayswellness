@@ -23,9 +23,9 @@ The app displays a list of 30 daily fitness exercises. Each exercise is presente
 Includes instrumented UI tests to verify the functionality of the expand/collapse icon button in each exercise card.
 
 ## Getting started
-    1. Clone the repository
-       ```bash
-            https://github.com/serventino-servenn/30dayswellness.git
+1. Clone the repository
+   ```bash
+   git clone https://github.com/serventino-servenn/30dayswellness.git
     
-    2. Open project in Android Studio 
-    3. Run the app on an emulator or physical device 
+2. Open project in Android Studio 
+3. Run the app on an emulator or physical device 
