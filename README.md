@@ -14,8 +14,8 @@ The app displays a list of 30 daily fitness exercises. Each exercise is presente
 
 ## Screenshots 
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/b344d69c-1aea-458c-828f-be362ca3446d" width="300"/>
-   <img src="https://github.com/user-attachments/assets/fd56afd3-3b89-4348-947e-b6dd52ca8a78" width="300"/>
+    <img src="https://github.com/user-attachments/assets/e902a981-66de-461a-9dbe-dc6e93ead30d" width="300"/>
+   <img src="https://github.com/user-attachments/assets/db1bdcac-c298-4db1-b437-f0cca0b8c446" width="300"/>
 </p>
 
 
