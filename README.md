@@ -1,6 +1,6 @@
 # 30 days Fitness app
-A simple Android app built with Jetpack Compose as part of the Android Basics course [Codelab](https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-3).
-The app displays a list of 30 daily fitness exercises. Each exercise is presented in a Material Design card with an expandable section that shows more information.
+A simple Android app built with Jetpack Compose as part of the [Android Basics with Compose Codelab.](https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-3).
+The app displays a list of 30 daily fitness exercises. Each exercise is presented in a Material Design card with an expandable section that reveals more information.
 
 ## What I learned
 -Applying Material Design in Compose
@@ -12,8 +12,12 @@ The app displays a list of 30 daily fitness exercises. Each exercise is presente
 -Adding animations 
 -Writing instrumented tests for UI components
 
-## Demo
-[![Demo Video]](file:///Users/serventinomuyndong/Downloads/demo.webm)
+## Screenshots 
+<p align="center">
+   <img src="![img_1.png](img_1.png)" width="150"/>
+    <img src="![img.png](img.png)" width="150"/>
+</p>
+
 
 ## Testing
 Includes instrumented UI tests to verify the functionality of the expand/collapse icon button in each exercise card.
