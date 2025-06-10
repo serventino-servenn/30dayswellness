@@ -3,14 +3,14 @@ A simple Android app built with Jetpack Compose as part of the Android Basics co
 The app displays a list of 30 daily fitness exercises. Each exercise is presented in a Material Design card with an expandable section that shows more information.
 
 ## What I learned
--Applying Material Design in Compose
--Creating a custom theme with fonts and colors
--Implementing a Top App Bar
--Designing a scrollable list using LazyColumn,LazyVerticalGrid,etc
--Structuring data with Kotlin data classes
--Building interactive Material Cards
--Adding animations 
--Writing instrumented tests for UI components
+- Applying Material Design in Compose
+- Creating a custom theme with fonts and colors
+- Implementing a Top App Bar
+- Designing a scrollable list using LazyColumn,LazyVerticalGrid,etc
+- Structuring data with Kotlin data classes
+- Building interactive Material Cards
+- Adding animations 
+- Writing instrumented tests for UI components
 
 ## Demo
 [![Demo Video]](file:///Users/serventinomuyndong/Downloads/demo.webm)
