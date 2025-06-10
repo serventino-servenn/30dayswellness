@@ -19,8 +19,8 @@ The app displays a list of 30 daily fitness exercises. Each exercise is presente
 </p>
 
 
-## Testing
-Includes instrumented UI tests to verify the fucntionality of the expand/collapse icon button in each exercise card.
+<!--## Testing
+Includes instrumented UI tests to verify the fucntionality of the expand/collapse icon button in each exercise card. -->
 
 ## Getting started
 1. Clone the repository
