@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">30 Days Fitness</string>
-<!--    <string name="top_bar">30 Days Fitness</string>-->
     <string name="exercise_count">%d Exercises</string>
     <string name="exercise_duration">%d min</string>
     <string name="day_label">Day %d</string>
@@ -11,6 +10,6 @@
     <string name="exercise5">Jumping Jacks</string>
     <string name="exercise6">Lunges</string>
     <string name="exercise7">Plank</string>
-    <string name="exercise8">Full Body</string>
+    <string name="exercise8">Trice Dips</string>
 
 </resources>

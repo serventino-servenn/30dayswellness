@@ -13,13 +13,13 @@ data class Exercise(
 
 object ExerciseList{
     val exercise = listOf(
-        Exercise(R.string.exercise1,3,16,R.drawable.yoga_2),
-        Exercise(R.string.exercise2,2,20,R.drawable.running),
-        Exercise(R.string.exercise3,4,17,R.drawable.weight),
-        Exercise(R.string.exercise4,3,30,R.drawable.push_ups),
-        Exercise(R.string.exercise5,4,12,R.drawable.jumping_jack),
-        Exercise(R.string.exercise6,2,10,R.drawable.lunges) ,
-        Exercise(R.string.exercise7,2,10,R.drawable.plank),
-        Exercise(R.string.exercise8,2,30,R.drawable.yoga_2)
+        Exercise(R.string.exercise1,16,3,R.drawable.yoga_2),
+        Exercise(R.string.exercise2,20,1,R.drawable.running),
+        Exercise(R.string.exercise3,17,4,R.drawable.weight),
+        Exercise(R.string.exercise4,30,2,R.drawable.push_ups),
+        Exercise(R.string.exercise5,12,1,R.drawable.jumping_jack),
+        Exercise(R.string.exercise6,10,2,R.drawable.lunges) ,
+        Exercise(R.string.exercise7,10,1,R.drawable.plank),
+        Exercise(R.string.exercise8,20,1,R.drawable.tricep_dip)
     )
 }
