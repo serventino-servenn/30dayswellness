@@ -12,6 +12,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -44,15 +45,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.practice.a30dayswellness.ui.data.Exercise
 import com.practice.a30dayswellness.ui.data.ExerciseList
 import com.practice.a30dayswellness.ui.theme.WellnessAppTheme
@@ -74,8 +72,7 @@ class MainActivity : ComponentActivity() {
                             )
                         )
 
-                    },
-                    containerColor = MaterialTheme.colorScheme.background
+                    }
                 ) {innerPadding ->
                     WellnessApp(
                        modifier = Modifier.padding(innerPadding)
@@ -92,27 +89,21 @@ fun WellnessApp(modifier: Modifier = Modifier){
         exercises = ExerciseList.exercise,
         modifier = modifier
             .fillMaxSize()
-            .padding(vertical = dimensionResource(id = R.dimen.padding_large)
-                , horizontal = dimensionResource(id = R.dimen.padding_large)
-            )
-
     )
 }
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun WellnessTopAppBar(
-    colors: TopAppBarColors? = null,
-) {
+fun WellnessTopAppBar(colors: TopAppBarColors? = null) {
     TopAppBar(
         title = {
             Text(
-                text = stringResource(R.string.top_bar),
+                text = stringResource(R.string.app_name),
                 style = MaterialTheme.typography.titleLarge
             )
         },
-        colors = colors ?: TopAppBarDefaults.topAppBarColors(),
+        colors = colors?: TopAppBarDefaults.topAppBarColors(),
     )
 }
 
@@ -125,6 +116,10 @@ fun WellnessList(
         columns = GridCells.Fixed(2),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(
+            vertical = dimensionResource(id = R.dimen.padding_large),
+            horizontal = dimensionResource(id = R.dimen.padding_large)
+        ),
         modifier = modifier
     ) {
         itemsIndexed(exercises) {index, exercise ->
@@ -136,119 +131,118 @@ fun WellnessList(
     }
 
 }
+
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun WellnessItem(
-    activity: Exercise,
-    day: Int,
+    activity:Exercise,
+    day:Int,
     modifier: Modifier = Modifier
 ) {
-    var isPressed by remember { mutableStateOf(false) }
-    val animatedColor by animateColorAsState(
-        targetValue = if (isPressed) MaterialTheme.colorScheme.tertiaryContainer
-        else MaterialTheme.colorScheme.primaryContainer
+    var isPressed by remember {mutableStateOf(false)}
+    val color by animateColorAsState(
+        targetValue = if(isPressed) MaterialTheme.colorScheme.tertiaryContainer
+        else MaterialTheme.colorScheme.primaryContainer,
     )
+   Card(
+       elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+       colors = CardDefaults.cardColors(
+           containerColor = MaterialTheme.colorScheme.primaryContainer
+       ),
+       modifier = modifier
+   ) {
+       Column(
+           horizontalAlignment = Alignment.CenterHorizontally,
+           modifier = Modifier
+               .background(color = color)
 
-    Card(
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        ),
-        modifier = modifier
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.background(animatedColor)
-        ) {
-            HeaderRow(
-                day = day,
-                isPressed = isPressed,
-                onToggle = { isPressed = !isPressed }
-            )
-            BodyContent(activity = activity, isPressed = isPressed)
-        }
-    }
+       ) {
+           Row(
+               horizontalArrangement = Arrangement.SpaceBetween,
+               modifier = Modifier.fillMaxWidth()
+           ) {
+               DayLabel(day = day)
+               WellnessButton(
+                   isPressed = isPressed,
+                   onClick = {isPressed = !isPressed }
+               )
+           }
+           WellnessCardBodyContent(
+               activity = activity,
+               isPressed = isPressed
+           )
+       }
+   }
 }
 
 @Composable
-fun HeaderRow(
-    day: Int,
-    isPressed: Boolean,
-    onToggle: () -> Unit
-) {
-    Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        DayLabel(day = day)
-        WellnessButton(
-            isPressed = isPressed,
-            onClick = onToggle
+fun WellnessCardBodyContent(
+    activity:Exercise,
+    isPressed:Boolean
+){
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.size(150.dp)
+
+    ){
+        Text(
+            text = stringResource(id = activity.name),
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(bottom = 10.dp, top = 10.dp)
         )
+        AnimatedContent(
+            targetState = isPressed,
+            label = "ToggleContent"
+        ) {showInfo ->
+            if(showInfo){
+                WellnessCardInfo(activityInfo = activity)
+            }else{
+                Image(
+                    painter = painterResource(id = activity.img),
+                    contentDescription = null,
+                )
+            }
+        }
+
     }
 }
 
 @Composable
-fun DayLabel(day: Int) {
+fun DayLabel(
+    day:Int,
+    modifier: Modifier = Modifier
+){
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(
                 start = dimensionResource(id = R.dimen.padding_medium),
                 top = dimensionResource(id = R.dimen.padding_medium)
-
             )
-            .clip(RoundedCornerShape(50.dp))
+            .clip(
+                shape = RoundedCornerShape(50.dp)
+            )
             .background(colorResource(id = R.color.black))
-    ) {
+
+    ){
         Text(
             text = stringResource(id = R.string.day_label, day),
             color = colorResource(id = R.color.white),
             style = MaterialTheme.typography.labelSmall,
-            modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
-
+            modifier = Modifier.padding( dimensionResource(id = R.dimen.padding_medium))
         )
     }
 }
 
-@Composable
-fun BodyContent(
-    activity: Exercise,
-    isPressed: Boolean
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
 
-    ) {
-        Text(
-            text = stringResource(id = activity.name),
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.padding_medium))
-        )
-        AnimatedContent(targetState = isPressed) { showInfo ->
-            if (showInfo) {
-                WellnessCardInfo(activityInfo = activity)
-            } else {
-                Image(
-                    painter = painterResource(id = activity.img),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.size(150.dp)
-
-                )
-            }
-        }
-    }
-}
 
 
 @Composable
 fun WellnessCardInfo(
-    activityInfo:Exercise,
-    modifier: Modifier = Modifier
+    activityInfo:Exercise
 ){
   Column(
-      horizontalAlignment = Alignment.CenterHorizontally,
-      modifier = modifier
+      horizontalAlignment = Alignment.CenterHorizontally
   ) {
       Text(
           text = stringResource(id = R.string.exercise_count, activityInfo.numberOfExercises),
