@@ -20,22 +20,7 @@ The app displays a list of 30 daily fitness exercises. Each exercise is presente
 
 
 ## Testing
-The main test focuses on the functionality of the icon button inside each card.When clicked, the icon is expected to reveal additional content within the card.
-
-Note:
-The current test only assert the icon’s behavior, not the actual revealed content,because:
-
-- Each card in the list displays similar UI components.
-
-- Asserting specific card content would require assigning a unique identifier (e.g., testTag) to each card's dynamic content.
-
-- This was intentionally left out to keep the UI code minimal and focused on Compose interaction patterns.
-
-### Test verified behavior:
-
-Clicking the icon changes the expanded/collapsed state.
-
-The UI updates to reflect the state change via icon rotation or layout change.
+Includes instrumented UI tests to verify the fucntionality of the expand/collapse icon button in each exercise card.
 
 ## Getting started
 1. Clone the repository
