@@ -10,7 +10,7 @@ The app displays a list of 30 daily fitness exercises. Each exercise is presente
 - Structuring data with Kotlin data classes
 - Building interactive Material Cards
 - Adding animations 
-- Writing instrumented tests for UI components
+<!-- - Writing instrumented tests for UI components -->
 
 ## Screenshots 
 <p align="center">
